@@ -28,16 +28,16 @@ export function App() {
           Запросить данные (нажать для обновления данных)
         </button>
       </div>
-      <div className="mt-10 flex flex-col gap-4">
+      <ul className="mt-10 flex flex-col gap-4">
         {data?.map((el) => (
-          <div key={el.data} className="border-b border-gray-300 ">
-            <span className={'p-10'}>{el.data}</span>
-            <a href={el.file} target={'_blank'} rel="noreferrer" className="text-blue-500">
+          <li key={el.data} className="border-b border-gray-300 flex ">
+            <div className={'pr-10'}>{el.data}</div>
+            <a href={el.file} target={'_blank'} rel="noreferrer" className="text-blue-500 flex">
               скачать файл
             </a>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
