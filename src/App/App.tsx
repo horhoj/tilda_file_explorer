@@ -1,0 +1,36 @@
+import { useEffect, useState } from 'react';
+
+interface Item {
+  data: string;
+  file: string;
+}
+
+export function App() {
+  const [data, setData] = useState<Item[] | null>(null);
+  const handleFetchData = async () => {
+    try {
+      const res = await fetch(
+        'https://siriusfuture-sirius-lead-captcha-acc9.twc1.net/captcha-checks/get?token=e7c34833-eb90-4522-8044-b8ccaf62aadb',
+      );
+
+      const arr = await res.json();
+
+      setData(arr);
+    } catch (e) {
+      alert('error');
+    }
+  };
+
+  return (
+    <div className={'max-w-[1280px] bg-white min-h-screen mx-auto p-4'}>
+      <div>
+        <button onClick={handleFetchData} className="p-4 bg-gray-400 text-white">
+          Запросить данные
+        </button>
+      </div>
+      <div className="mt-10"></div>
+
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
+  );
+}
