@@ -22,15 +22,22 @@ export function App() {
   };
 
   return (
-    <div className={'max-w-[1280px] bg-white min-h-screen mx-auto p-4'}>
+    <div className={'bg-white min-h-screen mx-auto p-4'}>
       <div>
         <button onClick={handleFetchData} className="p-4 bg-gray-400 text-white">
-          Запросить данные
+          Запросить данные (нажать для обновления данных)
         </button>
       </div>
-      <div className="mt-10"></div>
-
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <div className="mt-10 flex flex-col gap-4">
+        {data?.map((el) => (
+          <div key={el.data} className="border-b border-gray-300 ">
+            <span className={'p-10'}>{el.data}</span>
+            <a href={el.file} target={'_blank'} rel="noreferrer" className="text-blue-500">
+              скачать файл
+            </a>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
